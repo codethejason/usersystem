@@ -45,22 +45,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Login</h1>
+	<h1>Members</h1>
     <?php 
     
-        echo validation_errors(); //return errors, part of FORM helper
-        echo form_open('main/form_validation'); 
-        echo "<p><label for='email'>Email</label>";
-        echo form_input('email');
-        echo "</p>";
-    
-        echo "<p><label for='password'>Password</label>";
-        echo form_password('password');
-        echo "</p>";
-    
-        echo "<p>";
-        echo form_submit('login_submit', 'Login'); //parameters are name, value
-        echo "</p>";
     
     
     ?>

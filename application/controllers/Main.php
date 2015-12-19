@@ -26,5 +26,21 @@ class Main extends CI_Controller {
     public function login() {
         $this->load->view('login');
     }
+    
+    public function members() {
+        $this->load->view('members');
+    }
+    
+    public function login_validation() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'required');//name, title, requirements
+        $this->form_validation->set_rules('password', 'Password', 'required|md5');
+        
+        if($this->form_validation->run()) {
+            redirect('main/members');
+        } else {
+            $this->login();
+        }
+    }
 
 }
