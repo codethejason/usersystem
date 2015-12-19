@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php 
     
         echo validation_errors(); //return errors, part of FORM helper
-        echo form_open('main/form_validation'); 
+        echo form_open('main/login_validation'); 
         echo "<p><label for='email'>Email</label>";
         echo form_input('email');
         echo "</p>";
