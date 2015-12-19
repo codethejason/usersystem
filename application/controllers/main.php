@@ -24,7 +24,7 @@ class Main extends CI_Controller {
 	}
     
     public function login() {
-        $this->view->load('login');
+        $this->load->view('login');
     }
 
 }
