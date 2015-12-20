@@ -47,17 +47,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>Members</h1>
-    <pre>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+        </tr>
     <?php
     
     $query = $this->db->get('users');
     foreach($query->result() as $row) {
-        print_r($row);
+        echo "<tr>";
+        echo "<td>".$row->id."</td>";
+        echo "<td>".$row->email."</td>";
+        echo "</tr>";
     }
     
     ?>
     
-    </pre>
+    </table>
     <a href="logout">Logout</a>
 	
 </div>
