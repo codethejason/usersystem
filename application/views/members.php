@@ -37,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	#container {
 		margin: 10px;
+        padding: 10px;
 		border: 1px solid #D0D0D0;
 		box-shadow: 0 0 8px #D0D0D0;
 	}
@@ -46,9 +47,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>Members</h1>
+    <pre>
+    <?php
     
+    $query = $this->db->get('users');
+    foreach($query->result() as $row) {
+        print_r($row);
+    }
+    
+    ?>
+    
+    </pre>
     <a href="logout">Logout</a>
-        
 	
 </div>
 
