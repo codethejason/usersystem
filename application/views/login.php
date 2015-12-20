@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         echo form_close();
     ?>
 	
-    <a href="register">Register Now</a>
+    <a href="http://192.111.152.115:17210/usersystem/main/register">Register Now</a>
 </div>
 
 </body>
