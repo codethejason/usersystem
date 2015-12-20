@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Members</h1>
     <?php 
     
-    echo $this->session->all_userdata();
+    print_r( $this->session->all_userdata());
     
     ?>
 	

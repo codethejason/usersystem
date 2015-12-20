@@ -28,7 +28,12 @@ class Main extends CI_Controller {
     }
     
     public function members() {
-        $this->load->view('members');
+        if($this->session->userData('is_logged_in')) {
+            $this->load->view('members');
+        } else {
+            redirect('main/login');
+        }
+        
     }
     
     public function login_validation() {
