@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Login Form</title>
+	<title>Register</title>
 
 	<style type="text/css">
 
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
         echo form_close();
     ?>
-	
+	<a href="login">Login</a>
 </div>
 
 </body>
