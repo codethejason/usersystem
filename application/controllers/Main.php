@@ -67,9 +67,15 @@ class Main extends CI_Controller {
         $this->form_validation->set_message('is_unique', "The email has already been registered.");
         
         if($this->form_validation->run()) {
+            
+        $data = array(
+            'email' => $this->input->post('email'),
+            'password' => $this->input->post('password')
+        );
 
-            if($this->Model_users->addUser()) {
-                redirect('main/members');  
+        $addedUsers = $this->db->insert('users', $data);
+            if($addedUsers) {
+                redirect('main/members');
             } else {
                 echo "Failed to add user.";
             }
