@@ -37,6 +37,12 @@ class Main extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required|md5|trim');
         
         if($this->form_validation->run()) {
+            $data = array(
+                'email' => $this->input->post('email'),
+                'is_logged_in' => 1
+            );
+            $this->session->set_userdata($data);
+            
             redirect('main/members');
         } else {
             $this->login();
@@ -44,9 +50,9 @@ class Main extends CI_Controller {
     }
     
     public function validate_credentials() {
-        $this->load->model('model_users');
+        $this->load->model('Model_users');
         
-        if($this->model_users->can_log_in()) {
+        if($this->Model_users->can_log_in()) {
             return true;
         } else {
             $this->form_validation->set_message('validate_credentials', 'Incorrect username/password.');
