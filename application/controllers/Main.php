@@ -27,6 +27,10 @@ class Main extends CI_Controller {
         $this->load->view('login');
     }
     
+    public function register() {
+        $this->load->view('register');
+    }
+    
     public function members() {
         if($this->session->userData('is_logged_in')) {
             $this->load->view('members');
@@ -38,7 +42,7 @@ class Main extends CI_Controller {
     
     public function login_validation() {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|callback_validate_credentials');//name, title, requirements
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback_validate_credentials');//name, title, requirements
         $this->form_validation->set_rules('password', 'Password', 'required|md5|trim');
         
         if($this->form_validation->run()) {
@@ -54,6 +58,26 @@ class Main extends CI_Controller {
         }
     }
     
+    public function register_validation() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[users.email]');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|md5');
+        $this->form_validation->set_rules('confirmpassword', 'Password', 'required|trim|md5|matches[password]');
+        
+        $this->form_validation->set_message('is_unique', "The email has already been registered.");
+        
+        if($this->form_validation->run()) {
+
+            if($this->Model_users->addUser()) {
+                redirect('main/members');  
+            } else {
+                echo "Failed to add user.";
+            }
+        } else {
+            $this->register();
+        }
+    }
+    
     public function validate_credentials() {
         $this->load->model('Model_users');
         
@@ -64,5 +88,9 @@ class Main extends CI_Controller {
             return false;
         }
     }
-
+    
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('main/login');
+    }
 }

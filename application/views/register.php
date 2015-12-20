@@ -43,26 +43,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	label {
 	   display: block; 
 	}
-	</style>
+    </style>
 </head>
 <body>
 
 <div id="container">
-	<h1>Login</h1>
+	<h1>Sign Up</h1>
     <?php 
     
         echo validation_errors(); //return errors, part of FORM helper
-        echo form_open('main/login_validation'); 
+        echo form_open('main/register_validation'); 
         echo "<p><label for='email'>Email</label>";
-        echo form_input('email', $this->input->post('email'));
+        echo form_input('email', $this->input->post('email')); //so user doesn't have to retype email if there are errors
         echo "</p>";
     
         echo "<p><label for='password'>Password</label>";
         echo form_password('password');
+        echo "</p>";   
+    
+        echo "<p><label for='password'>Confirm Password</label>";
+        echo form_password('confirmpassword');
         echo "</p>";
     
         echo "<p>";
-        echo form_submit('login_submit', 'Login'); //parameters are name, value
+        echo form_submit('register_submit', 'Register'); //parameters are name, value
         echo "</p>";
     
         echo form_close();
